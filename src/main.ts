@@ -19,7 +19,7 @@ const run = async (): Promise<void> => {
   try {
     baseURL = core.getInput('baseUrl', {required: true})
     source = core.getInput('source', {required: true})
-    no_prometheus = core.getInput('no_prometheus')
+    no_prometheus = core.getInput('no_prometheus') === 'true'
     version = core.getInput('version')
   } catch (error) {
     core.setFailed(error.message)
