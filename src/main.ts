@@ -12,17 +12,15 @@ interface SpinnakerResponse {
 const run = async (): Promise<void> => {
   let baseURL,
     source,
-    serviceName,
-    image,
-    tag,
+    no_prometheus = false,
+    version,
     secret = undefined,
     httpsAgent = undefined
   try {
     baseURL = core.getInput('baseUrl', {required: true})
     source = core.getInput('source', {required: true})
-    serviceName = core.getInput('serviceName', {required: true})
-    image = core.getInput('image', {required: true})
-    tag = core.getInput('tag', {required: true})
+    no_prometheus = core.getInput('no_prometheus')
+    version = core.getInput('version')
   } catch (error) {
     core.setFailed(error.message)
     return
@@ -68,10 +66,9 @@ const run = async (): Promise<void> => {
   }
   const requestData = {
     secret,
+    version,
     parameters: {
-      serviceName,
-      image,
-      tag
+      no_prometheus,
     }
   }
 
