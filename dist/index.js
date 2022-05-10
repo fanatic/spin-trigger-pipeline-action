@@ -88,9 +88,11 @@ const run = () => __awaiter(void 0, void 0, void 0, function* () {
     };
     const requestData = {
         secret,
-        version,
+        properties: {
+            version
+        },
         parameters: {
-            no_prometheus,
+            no_prometheus
         }
     };
     const instance = axios_1.default.create(instanceConfig);

@@ -66,9 +66,11 @@ const run = async (): Promise<void> => {
   }
   const requestData = {
     secret,
-    version,
+    properties: {
+      version
+    },
     parameters: {
-      no_prometheus,
+      no_prometheus
     }
   }
 
